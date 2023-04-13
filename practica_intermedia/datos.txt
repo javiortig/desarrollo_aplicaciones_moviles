@@ -1,0 +1,36 @@
+artistas.add(new Artista("ColdPlay",0));
+        artistas.add(new Artista("The Offspring",0));
+        artistas.add(new Artista("Papa Roach",0));
+        artistas.add(new Artista("Red Hot Chili Peppers",0));
+
+discos.add(new Disco("Parachutes", "ColdPlay", "Capitol Records", 2000, 0));
+        discos.add(new Disco("A Rush of Blood to the Head", "ColdPlay", "Capitol Records", 2002, 0));
+        discos.add(new Disco("X&Y", "ColdPlay", "Capitol Records", 2008, 0));
+        discos.add(new Disco("Mylo Xyloto", "ColdPlay", "Capitol Records", 2011, 0));
+        discos.add(new Disco("Ghost Stories", "ColdPlay", "Parlophone", 2014, 0));
+        discos.add(new Disco("Everyday Life", "ColdPlay", "Parlophone", 2021, 0));
+ 
+discos.add(new Disco("Californication", "Red Hot Chili Peppers", "Warner", 1999, 0));
+        discos.add(new Disco("By the way", "Red Hot Chili Peppers", "Warner", 2002, 0));
+        discos.add(new Disco("Stadium Arcadium", "Red Hot Chili Peppers", "Warner", 2006, 0));
+        discos.add(new Disco("I'm with You", "Red Hot Chili Peppers", "Warrner", 2011, 0));
+        discos.add(new Disco("The Getaway", "Red Hot Chili Peppers", "Warrner", 2016, 0));
+        discos.add(new Disco("Unlimited Love", "Red Hot Chili Peppers", "Warrner", 2022, 0));
+
+discos.add(new Disco("Smash", "The Offspring", "Epitaph Records", 1994, 0));
+        discos.add(new Disco("Ixnay on the Hombre", "The Offspring", "Columbia Records", 1997, 0));
+        discos.add(new Disco("Americana", "The Offspring", "Columbia Records", 1998, 0));
+        discos.add(new Disco("Splinter", "The Offspring", "Columbia Records", 2003, 0));
+        discos.add(new Disco("Rise and Fall, Rage and Grace", "The Offspring", "Columbia Records", 2008, 0));
+        discos.add(new Disco("Days Go By", "The Offspring", "Columbia Records", 2012, 0));
+        discos.add(new Disco("Let the Bad Times Roll", "The Offspring", "Concord Records", 2021, 0));
+        
+discos.add(new Disco("Infest", "Papa Roach", "DreamWorks Records", 2000, 0));
+        discos.add(new Disco("Lovehatetragedy", "Papa Roach", "DreamWorks Records", 2002, 0));
+        discos.add(new Disco("Getting Away With Murder", "Papa Roach", "Geffen Records", 2004, 0));
+        discos.add(new Disco("The Paramour Sessions", "Papa Roach", "Geffen Records", 2006, 0));
+        discos.add(new Disco("Metamorphosis", "Papa Roach", "Interscope Records", 2009, 0));
+        discos.add(new Disco("The Connection", "Papa Roach", "Eleven Seven Music", 2012, 0));
+        discos.add(new Disco("F.E.A.R.", "Papa Roach", "Eleven Seven Music", 2015, 0));
+        discos.add(new Disco("Crooked Teeth", "Papa Roach", "Eleven Seven Music", 2017, 0));
+        
