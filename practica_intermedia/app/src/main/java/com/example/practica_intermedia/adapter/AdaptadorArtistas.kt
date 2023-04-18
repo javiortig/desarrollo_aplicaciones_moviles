@@ -1,18 +1,24 @@
 package com.example.practica_intermedia.adapter
 
 import android.content.Context
+import android.content.Intent
+import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
+import com.example.practica_intermedia.DiscosActivity
 import com.example.practica_intermedia.R
 import com.example.practica_intermedia.model.Artista
+import com.google.android.material.snackbar.Snackbar
 
-class AdaptadorArtista(var listaJuegos: ArrayList<Artista>, var context: Context) : RecyclerView.Adapter<AdaptadorArtista.MyHolder>() {
+class AdaptadorArtistas(var listaArtistas: ArrayList<Artista>, var context: Context) : RecyclerView.Adapter<AdaptadorArtistas.MyHolder>() {
 
     class MyHolder(itemView: View) : ViewHolder(itemView) {
         // template --> aspecto del XML
@@ -35,23 +41,28 @@ class AdaptadorArtista(var listaJuegos: ArrayList<Artista>, var context: Context
 
     override fun getItemCount(): Int {
         // tamaño de la lista de elementos a mostrar <Juegos>
-        return listaJuegos.size
+        return listaArtistas.size
     }
 
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
         // enlaza la plantilla con el elemento de la posicion
-        val dato = listaJuegos[position]
+        val dato = listaArtistas[position]
         holder.nombreTextView.text =  dato.nombre
         Glide.with(context).load(dato.imagen)
             .into(holder.imagenImageView)
 
-        /*
         holder.imagenImageView.setOnClickListener {
             Snackbar.make(holder.imagenImageView,
-                dato.genero, Snackbar.LENGTH_SHORT).show()
+                dato.nombre, Snackbar.LENGTH_SHORT).show()
+            val intent = Intent(context,DiscosActivity::class.java)
+            val bundle = Bundle()
+            bundle.putString("nombre",dato.nombre)
+
+            intent.putExtras(bundle)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+
+            startActivity(context, intent, bundle)
         }
-        */
-        //dato.imagena
 
     }
 

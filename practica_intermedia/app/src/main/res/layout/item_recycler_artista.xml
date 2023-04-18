@@ -12,7 +12,9 @@
         android:layout_width="125dp"
         android:layout_height="175dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@mipmap/ic_launcher"
+        />
 
     <TextView
         android:id="@+id/nombre_recycler_artista"
