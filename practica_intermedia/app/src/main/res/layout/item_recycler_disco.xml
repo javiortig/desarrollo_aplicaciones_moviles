@@ -8,22 +8,23 @@
     >
 
     <ImageView
-        android:id="@+id/imagen_recycler_artista"
+        android:id="@+id/imagen_recycler_disco"
         android:layout_width="125dp"
         android:layout_height="175dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:src="@mipmap/ic_launcher"
         />
 
     <TextView
-        android:id="@+id/nombre_recycler_artista"
+        android:id="@+id/nombre_recycler_disco"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="NOMBRE"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imagen_recycler_artista"
+        app:layout_constraintBottom_toBottomOf="@+id/imagen_recycler_disco"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imagen_recycler_artista"
-        app:layout_constraintTop_toTopOf="@+id/imagen_recycler_artista" />
+        app:layout_constraintStart_toEndOf="@+id/imagen_recycler_disco"
+        app:layout_constraintTop_toTopOf="@+id/imagen_recycler_disco" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

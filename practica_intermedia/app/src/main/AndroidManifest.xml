@@ -17,6 +17,10 @@
             android:name=".DiscosActivity"
             android:exported="false" />
         <activity
+            android:name=".DetallesActivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
