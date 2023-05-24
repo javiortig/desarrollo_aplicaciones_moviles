@@ -26,6 +26,7 @@ class AdaptadorArtistas(var listaArtistas: ArrayList<Artista>, var context: Cont
         var imagenImageView: ImageView
 
         init {
+            //Localiza los views del layout
             nombreTextView = itemView.findViewById(R.id.nombre_recycler_artista)
             imagenImageView = itemView.findViewById(R.id.imagen_recycler_artista)
         }
@@ -33,7 +34,7 @@ class AdaptadorArtistas(var listaArtistas: ArrayList<Artista>, var context: Cont
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
-        // creará la plantilla y la retorna, necesitando el XML
+        // crea la plantilla y la retorna, necesitando el XML
         val view: View = LayoutInflater.from(context).inflate(R.layout.item_recycler_artista,parent,
             false)
         return MyHolder(view)
@@ -52,6 +53,8 @@ class AdaptadorArtistas(var listaArtistas: ArrayList<Artista>, var context: Cont
             .into(holder.imagenImageView)
 
         holder.imagenImageView.setOnClickListener {
+            //Creamos un listener en cada imagen asociado a su artista, que será pasado como
+            // Parámetro en el bundle
             Snackbar.make(holder.imagenImageView,
                 dato.nombre, Snackbar.LENGTH_SHORT).show()
             val intent = Intent(context,DiscosActivity::class.java)

@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         artistas.add(Artista("Papa Roach", "https://genreisdead.com/wp-content/uploads/2020/06/papa-roach-e1581586358309.jpg"))
         artistas.add(Artista("Red Hot Chili Peppers", "https://images.kerrangcdn.com/2021/03/Red-Hot-Chili-Peppers-Flea-Chad-John-Anthony-header.jpeg?auto=compress&fit=crop&w=2400&h=1350"))
 
-
+        // Asociamos los artistas al recyclerView
         adaptadorArtistas = AdaptadorArtistas(artistas,applicationContext)
 
         binding.recyclerGrupos.adapter = adaptadorArtistas

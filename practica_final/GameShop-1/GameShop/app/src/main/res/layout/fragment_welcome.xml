@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    >
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:src="@drawable/shop"
+        android:paddingHorizontal="20dp"
+        android:layout_marginBottom="10dp"
+
+
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_margin="10dp"
+        android:paddingHorizontal="20dp"
+        android:text="Bienvenido a la tienda de videojuegos. En la aplicación podrá:"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_margin="10dp"
+        android:paddingHorizontal="20dp"
+        android:text="* Comprar juegos desde la sección de compras."
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_margin="10dp"
+        android:paddingHorizontal="20dp"
+        android:text="* Comprar juegos en oferta desde la sección de ofertas."
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_margin="10dp"
+        android:paddingHorizontal="20dp"
+        android:text="* Ver los juegos del carrito y finalizar la compra desde la sección del carrito."
+        />
+
+</LinearLayout>

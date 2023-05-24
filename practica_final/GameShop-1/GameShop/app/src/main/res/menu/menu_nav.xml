@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Inicio"
+        android:id="@+id/inicio_menu"
+        ></item>
+
+    <item android:title="Tienda">
+        <menu>
+            <item android:title="Compras"
+                android:icon="@drawable/sale"
+                android:id="@+id/compras_menu"
+                ></item>
+            <item android:title="Ofertas"
+                android:icon="@drawable/sale"
+                android:id="@+id/ofertas_menu"
+                ></item>
+            <item android:title="Carrito"
+                android:icon="@drawable/carrito"
+                android:id="@+id/carrito_menu"
+                ></item>
+        </menu>
+    </item>
+
+</menu>

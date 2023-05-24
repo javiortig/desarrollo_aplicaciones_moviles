@@ -23,14 +23,13 @@ class DiscosActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DiscosLayoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        // recepciono datos
+        // Recepción de datos
         nombreRecuperado = intent.extras?.getString("nombre","DEFAULT") ?: "defecto"
-        Log.v("prueba_comunicacion: ",nombreRecuperado)
         personalizarRecycer()
     }
 
     fun personalizarRecycer(){
-
+        // Según el grupo que recibimos por parámetro de la Activity, mostramos una serie de discos.
         discos = ArrayList()
         when (nombreRecuperado) {
             "ColdPlay" -> {
@@ -73,6 +72,7 @@ class DiscosActivity : AppCompatActivity() {
             }
         }
 
+        // Asociamos los discos al recyclerView
         adaptadorDiscos = AdaptadorDiscos(discos,applicationContext)
         binding.recyclerDiscos.adapter = adaptadorDiscos
         binding.recyclerDiscos.layoutManager = LinearLayoutManager(applicationContext,

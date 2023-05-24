@@ -51,6 +51,11 @@ class AdaptadorDiscos (var listaDiscos: ArrayList<Disco>, var context: Context) 
             .into(holder.imagenImageView)
 
         holder.imagenImageView.setOnClickListener {
+            /*
+                Creamos un listener en cada imagen asociado a su disco,
+                y pasamos como parametros los datos del disco para la Activity de detalles del disco
+            */
+
             Snackbar.make(holder.imagenImageView,
                 dato.nombre, Snackbar.LENGTH_SHORT).show()
             val intent = Intent(context, DetallesActivity::class.java)
