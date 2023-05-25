@@ -10,7 +10,10 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.practica_final.FragmentDetalle
 import com.example.practica_final.R
 import com.example.practica_final.model.Producto
 import com.google.android.material.snackbar.Snackbar
@@ -52,27 +55,33 @@ class AdaptadorProductos(var listaProductos: ArrayList<Producto>, var context: C
         // enlaza la plantilla con el elemento de la posicion
         val dato = listaProductos[position]
         holder.nombreTextView.text =  dato.nombre
-        /*Glide.with(context).load(dato.imagen)
-            .into(holder.imagenImageView)*/
+        holder.precioTextView.text = dato.precio.toString()
+        Glide.with(context).load(dato.imagen)
+            .into(holder.imagenImageView)
 
-        /*
-        holder.imagenImageView.setOnClickListener {
-            //Creamos un listener en cada imagen asociado a su artista, que será pasado como
-            // Parámetro en el bundle
-            Snackbar.make(holder.imagenImageView,
-                dato.nombre, Snackbar.LENGTH_SHORT).show()
-            val intent = Intent(context,DiscosActivity::class.java)
-            val bundle = Bundle()
-            bundle.putString("nombre",dato.nombre)
+        holder.detalleButtonView.setOnClickListener{
+            val bundle = Bundle().apply {
+                // Put the variable "precio" in the bundle
+                putInt("precio", dato.precio)
+                putString("nombre", dato.nombre)
+                putString("descripcion", dato.descripcion)
+                putString("imagen", dato.imagen)
+            }
 
-            intent.putExtras(bundle)
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            // Create an instance of Fragment B
+            val fragmentB = FragmentDetalle()
 
-            ContextCompat.startActivity(context, intent, bundle)
+            // Set the arguments for Fragment
+            fragmentB.arguments = bundle
 
-
+            // Navigate to Fragment B
+            ((FragmentActivity) context).getSupportFragmentManager().supportFragmentManager?.beginTransaction()
+                ?.replace(R.id.frameContainer, fragmentB)
+                ?.addToBackStack(null)
+                ?.commit()
         }
-        */
+
+
     }
 
 }
