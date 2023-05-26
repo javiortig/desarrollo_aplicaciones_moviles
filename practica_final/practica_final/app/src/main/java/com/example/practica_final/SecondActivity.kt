@@ -27,6 +27,7 @@ class SecondActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySecondBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         supportFragmentManager.commit {
             replace<FragmentProductos>(R.id.contenedorFrame)
             setReorderingAllowed(true)

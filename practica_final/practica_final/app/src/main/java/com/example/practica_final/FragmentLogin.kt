@@ -19,7 +19,9 @@ class FragmentLogin : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
+
         auth = FirebaseAuth.getInstance()
+
     }
 
     override fun onCreateView(
@@ -37,23 +39,21 @@ class FragmentLogin : Fragment() {
         val context = requireContext()
         //auth.signOut()
         binding.botonSigUp.setOnClickListener {
-            /*auth.createUserWithEmailAndPassword(binding.editUsername.text.toString(),
-                binding.editPassword.text.toString())
-                .addOnCompleteListener {
-                    if (it.isSuccessful){
-                        Snackbar.make(binding.root,"Registro correcto", Snackbar.LENGTH_SHORT).show()
-                    } else {
-                        Snackbar.make(binding.root,"Algo ha fallado", Snackbar.LENGTH_SHORT).show()
-                    }
-                }   */
-            // registro ok -> no esta el usuario creado,la pass es correcta, la conexion es correcta
-            // registro fallo -> si ya hay un usuario, si la pass es mala, si el correo no esta bien formateado
+            val fragmentRegister = FragmentRegister()
+            val mainActivity = requireActivity() as MainActivity
+
+            mainActivity.changeFragment(fragmentRegister)
+
         }
         binding.botonLogin.setOnClickListener {
+            println(binding.editUsername.text.toString())
+            println(binding.editPassword.text.toString())
             auth.signInWithEmailAndPassword(binding.editUsername.text.toString(),
                 binding.editPassword.text.toString())
                 .addOnCompleteListener {
                     if(it.isSuccessful){
+
+                        // Si se ha logeado correctamente, comenzamos la SecondActivity con ese usuario
                         val bundle = Bundle()
                         bundle.putString("uid",auth.uid!!)
 

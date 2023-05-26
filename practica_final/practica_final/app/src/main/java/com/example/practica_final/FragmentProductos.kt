@@ -13,6 +13,7 @@ import com.example.practica_final.model.Producto
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.BufferedReader
@@ -21,22 +22,12 @@ import java.net.URL
 
 class FragmentProductos : Fragment() {
     private lateinit var binding: FragmentProductosBinding
-    private lateinit var productos: ArrayList<Producto>
     private lateinit var adaptadorProductos: AdaptadorProductos
+    private var productos: ArrayList<Producto> = ArrayList()
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        getProducts()
-        /*
-        productos.add(Producto("Ifon", 999f, "https://i.dummyjson.com/data/products/1/1.jpg"))
-        productos.add(Producto("Samsum", 544f, "https://i.dummyjson.com/data/products/1/1.jpg"))
-        productos.add(Producto("Pixel", 345f, "https://i.dummyjson.com/data/products/1/1.jpg"))
-        */
 
-        println("Productos array:")
-        for (p in productos){
-            println(p.nombre)
-        }
         adaptadorProductos = AdaptadorProductos(productos, context)
     }
 
@@ -46,19 +37,20 @@ class FragmentProductos : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentProductosBinding.inflate(inflater,container,false)
+
+        binding.recyclerProductos.adapter = adaptadorProductos
+        binding.recyclerProductos.layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
+
         return binding.root
     }
 
-    override fun onResume() {
-        super.onResume()
-        //binding.recyclerLenguajes.adapter = adaptadorLenguajes
-        binding.recyclerProductos.adapter = adaptadorProductos
-        binding.recyclerProductos.layoutManager =
-            LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        getProducts()
     }
 
     fun getProducts(){
-        productos = ArrayList()
 
         GlobalScope.launch(Dispatchers.Default) {
             val url = URL("https://dummyjson.com/products")
@@ -79,11 +71,19 @@ class FragmentProductos : Fragment() {
                 val price = jsonObject["price"] as Int
                 val image = jsonObject["thumbnail"] as String
                 val description = jsonObject["description"] as String
-                println(price)
+
                 productos.add(Producto(title, price, image, description))
             }
-        }
 
+            // Cuando la corutina termine y haya cargado los productos, los muestra
+            withContext(Dispatchers.Main) {
+                // Notify the adapter that the data set has changed
+                adaptadorProductos.notifyDataSetChanged()
+
+                // Finally, display the RecyclerView
+                binding.recyclerProductos.visibility = View.VISIBLE
+            }
+        }
 
     }
 

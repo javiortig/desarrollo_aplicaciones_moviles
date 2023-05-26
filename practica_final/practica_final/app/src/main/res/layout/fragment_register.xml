@@ -3,9 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentLogin"
-    android:background="@android:color/transparent"
-    >
+    tools:context=".FragmentRegister">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,49 +20,63 @@
             android:background="@drawable/circle"
             android:gravity="center"
             android:textColor="#ffffff"/>
+
         <EditText
-            android:id="@+id/editUsername"
+            android:id="@+id/emailRegisterText"
             android:layout_marginTop="15dp"
             android:gravity="center"
             android:layout_width="250dp"
             android:layout_height="40dp"
-            android:hint="Usuario"
+            android:hint="email"
             android:textColorHint="#FFFBF6"
             android:background="@drawable/custombutton"
             />
         <EditText
-            android:id="@+id/editPassword"
+            android:id="@+id/passwordRegisterText"
             android:layout_marginTop="15dp"
             android:gravity="center"
             android:layout_width="250dp"
             android:layout_height="40dp"
-            android:hint="Contraseña"
+            android:hint="contraseña"
             android:textColorHint="#FFFBF6"
-            android:background="@drawable/custombutton"/>
-        <CheckBox
-            android:id="@+id/keepSignCheckbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Manten la sesión iniciada"
-            android:textColor="#FFFBF6"
-            android:hint="#FFFBF6"
-            android:layout_marginTop="15dp"
-            android:buttonTint="#FFFBF6"
+            android:background="@drawable/custombutton"
             />
-        <Button
-            android:id="@+id/botonLogin"
+        <EditText
+            android:id="@+id/edadRegisterText"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
             android:layout_width="250dp"
             android:layout_height="40dp"
-            android:text="Log in"
+            android:hint="Edad"
+            android:textColorHint="#FFFBF6"
+            android:background="@drawable/custombutton"
+            />
+        <EditText
+            android:id="@+id/direccionRegisterText"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:hint="direccion"
+            android:textColorHint="#FFFBF6"
+            android:background="@drawable/custombutton"
+            />
+
+
+        <Button
+            android:id="@+id/botonRegistrarse"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:text="Registrarme"
             android:textAllCaps="false"
             android:layout_marginTop="10dp"
             android:background="@drawable/custombutton2"
             android:textColor="#FFFBF6"/>
         <Button
-            android:id="@+id/botonSigUp"
+            android:id="@+id/botonVolverLogin"
             android:layout_width="250dp"
             android:layout_height="40dp"
-            android:text="Sign Up"
+            android:text="Volver al login"
             android:textAllCaps="false"
             android:layout_marginTop="10dp"
             android:background="@drawable/custombutton2"
@@ -74,14 +86,6 @@
             android:layout_height="2dp"
             android:background="#3fff"
             android:layout_marginTop="15dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="He olvidado mi contraseña"
-            android:textSize="18dp"
-            android:layout_marginTop="15dp"
-            android:textColor="#FFFBF6"
-            />
 
     </LinearLayout>
 
