@@ -21,14 +21,16 @@ import java.io.InputStreamReader
 import java.net.URL
 
 class FragmentProductos : Fragment() {
+    private lateinit var secondActivity: SecondActivity
     private lateinit var binding: FragmentProductosBinding
     private lateinit var adaptadorProductos: AdaptadorProductos
-    private var productos: ArrayList<Producto> = ArrayList()
+
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
+        secondActivity = requireActivity() as SecondActivity
 
-        adaptadorProductos = AdaptadorProductos(productos, context)
+        adaptadorProductos = AdaptadorProductos(secondActivity.productos, context)
     }
 
     override fun onCreateView(
@@ -48,6 +50,13 @@ class FragmentProductos : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         getProducts()
+
+        binding.botonIrCarrito.setOnClickListener {
+            val fragmentCarrito = FragmentCarrito()
+            val secondActivity = context as SecondActivity
+
+            secondActivity.changeFragment(fragmentCarrito, "FragmentCarrito")
+        }
     }
 
     fun getProducts(){
@@ -72,7 +81,7 @@ class FragmentProductos : Fragment() {
                 val image = jsonObject["thumbnail"] as String
                 val description = jsonObject["description"] as String
 
-                productos.add(Producto(title, price, image, description))
+                secondActivity.productos.add(Producto(title, price, image, description))
             }
 
             // Cuando la corutina termine y haya cargado los productos, los muestra

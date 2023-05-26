@@ -11,12 +11,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.practica_final.FragmentDetalle
+import com.example.practica_final.MainActivity
 import com.example.practica_final.SecondActivity
 import com.example.practica_final.R
 import com.example.practica_final.model.Producto
+import com.google.android.material.snackbar.Snackbar
 
 class AdaptadorProductos(var listaProductos: ArrayList<Producto>, var context: Context) : RecyclerView.Adapter<AdaptadorProductos.MyHolder>() {
-
+    private lateinit var secondActivity: SecondActivity
     class MyHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         // template --> aspecto del XML
         var nombreTextView: TextView
@@ -49,6 +51,7 @@ class AdaptadorProductos(var listaProductos: ArrayList<Producto>, var context: C
     }
 
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
+        secondActivity = context as SecondActivity
         // enlaza la plantilla con el elemento de la posicion
         val dato = listaProductos[position]
         holder.nombreTextView.text =  dato.nombre
@@ -59,10 +62,7 @@ class AdaptadorProductos(var listaProductos: ArrayList<Producto>, var context: C
         holder.detalleButtonView.setOnClickListener{
             val bundle = Bundle().apply {
                 // Añadimos las variables a pasar
-                putInt("precio", dato.precio)
-                putString("nombre", dato.nombre)
-                putString("descripcion", dato.descripcion)
-                putString("imagen", dato.imagen)
+                putInt("index", position)
             }
 
             // Instanciamos fragmentDetalle
@@ -70,14 +70,18 @@ class AdaptadorProductos(var listaProductos: ArrayList<Producto>, var context: C
             fragmentDetalle.arguments = bundle
 
             if (context is SecondActivity) {
-                val secondActivity = context as SecondActivity
-                secondActivity.changeFragment(fragmentDetalle)
+                secondActivity.changeFragment(fragmentDetalle, "FragmentDetalle")
             }
             else{
                 throw IllegalArgumentException("Context must be an instance of MainActivity")
             }
 
 
+        }
+        holder.comprarButtonView.setOnClickListener{
+
+            secondActivity.crearSnackBar("Producto añadido al carrito")
+            secondActivity.anadirProductoCarrito(position)
         }
 
 

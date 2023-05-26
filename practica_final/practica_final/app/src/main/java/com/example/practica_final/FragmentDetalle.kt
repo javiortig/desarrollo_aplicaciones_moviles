@@ -21,10 +21,12 @@ import java.io.InputStreamReader
 import java.net.URL
 
 class FragmentDetalle : Fragment() {
+    private lateinit var secondActivity: SecondActivity
     private lateinit var binding: FragmentDetalleBinding
         override fun onAttach(context: Context) {
             super.onAttach(context)
 
+            secondActivity = requireActivity() as SecondActivity
         }
 
         override fun onCreateView(
@@ -38,17 +40,15 @@ class FragmentDetalle : Fragment() {
 
         override fun onResume() {
             super.onResume()
-            val nombre = arguments?.getString("nombre")
-            val precio = arguments?.getInt("precio")
-            val descripcion = arguments?.getString("descripcion")
+            val index = arguments?.getInt("index") as Int
+            val producto : Producto = secondActivity.productos[index]
 
-            val imagen = arguments?.getString("imagen")
 
-            binding.nombreProductoDetalle.text = nombre
-            binding.precioProductoDetalle.text = precio.toString()
-            binding.descripcionProductoDetalle.text = descripcion
+            binding.nombreProductoDetalle.text = producto.nombre
+            binding.precioProductoDetalle.text = producto.precio.toString()
+            binding.descripcionProductoDetalle.text = producto.descripcion
 
-            Glide.with(this).load(imagen)
+            Glide.with(this).load(producto.imagen)
                 .into(binding.imagenProductoDetalle)
         }
 
