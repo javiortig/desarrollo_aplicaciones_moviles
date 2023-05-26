@@ -1,7 +1,6 @@
 package com.example.practica_final.adapter
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,14 +8,12 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContextCompat
-import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.practica_final.FragmentDetalle
+import com.example.practica_final.SecondActivity
 import com.example.practica_final.R
 import com.example.practica_final.model.Producto
-import com.google.android.material.snackbar.Snackbar
 
 class AdaptadorProductos(var listaProductos: ArrayList<Producto>, var context: Context) : RecyclerView.Adapter<AdaptadorProductos.MyHolder>() {
 
@@ -61,24 +58,26 @@ class AdaptadorProductos(var listaProductos: ArrayList<Producto>, var context: C
 
         holder.detalleButtonView.setOnClickListener{
             val bundle = Bundle().apply {
-                // Put the variable "precio" in the bundle
+                // Añadimos las variables a pasar
                 putInt("precio", dato.precio)
                 putString("nombre", dato.nombre)
                 putString("descripcion", dato.descripcion)
                 putString("imagen", dato.imagen)
             }
 
-            // Create an instance of Fragment B
-            val fragmentB = FragmentDetalle()
+            // Instanciamos fragmentDetalle
+            val fragmentDetalle = FragmentDetalle()
+            fragmentDetalle.arguments = bundle
 
-            // Set the arguments for Fragment
-            fragmentB.arguments = bundle
+            if (context is SecondActivity) {
+                val secondActivity = context as SecondActivity
+                secondActivity.changeFragment(fragmentDetalle)
+            }
+            else{
+                throw IllegalArgumentException("Context must be an instance of MainActivity")
+            }
 
-            // Navigate to Fragment B
-            ((FragmentActivity) context).getSupportFragmentManager().supportFragmentManager?.beginTransaction()
-                ?.replace(R.id.frameContainer, fragmentB)
-                ?.addToBackStack(null)
-                ?.commit()
+
         }
 
 

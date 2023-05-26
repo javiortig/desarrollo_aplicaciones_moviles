@@ -21,10 +21,11 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:textAlignment="center"
             android:id="@+id/precio_producto_detalle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="10dp"
+            android:layout_marginTop="14dp"
             android:text="97€"
             android:textSize="22sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -35,19 +36,19 @@
             android:id="@+id/nombre_producto_detalle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:text="nombre_producto"
             android:textSize="22sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imagen_disco_detalle"></TextView>
+            app:layout_constraintTop_toBottomOf="@+id/imagen_producto_detalle"></TextView>
 
         <TextView
+            android:textAlignment="center"
             android:id="@+id/descripcion_producto_detalle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="descripcion del producto"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="24dp"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
